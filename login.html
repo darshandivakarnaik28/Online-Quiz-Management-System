@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            background: #1e1e2f;
+            font-family: 'Segoe UI', sans-serif;
+            color: #fff;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .login-container {
+            background: #2c2f4a;
+            padding: 40px;
+            border-radius: 15px;
+            display: inline-block;
+            box-shadow: 0 0 15px #000;
+        }
+
+        h2 {
+            color: #00ffd5;
+            margin-bottom: 20px;
+        }
+
+        .robot {
+            font-size: 60px;
+            margin-bottom: 20px;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        input[type="email"], input[type="password"] {
+            padding: 12px 15px;
+            width: 80%;
+            border: none;
+            border-radius: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        input[type="password"] {
+            background-color: #444;
+            color: #eee;
+            letter-spacing: 4px;
+        }
+
+        input[type="submit"] {
+            padding: 12px 25px;
+            background-color: #00ffd5;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            color: #000;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #00c2a7;
+        }
+
+        a {
+            color: #00ffd5;
+            text-decoration: none;
+        }
+
+        .error {
+            color: #ff4d4d;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="robot">🤖</div>
+        <h2>Login Portal</h2>
+        <form method="POST">
+            <input type="email" name="email" placeholder="👁 Robot sees your email..." required><br>
+            <input type="password" name="password" placeholder="🔒 Password (hidden from robot)" required><br>
+            <input type="submit" value="Login">
+        </form>
+        <p>Don't have an account? <a href="/register">Register here</a></p>
+        <p class="error">{{ error }}</p>
+    </div>
+
+</body>
+</html>

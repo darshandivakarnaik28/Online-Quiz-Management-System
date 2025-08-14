@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Result</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 40px;
+            background: #f3f3f3;
+        }
+        h2 {
+            color: #4CAF50;
+        }
+        #chart-container {
+            width: 300px;
+            margin: 20px auto;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Quiz Completed!</h2>
+    <p>Well done, <strong>{{ name }}</strong>!</p>
+    <p>Your Score: <strong>{{ score }}</strong> out of 10</p>
+
+    <div id="chart-container">
+        <canvas id="scoreChart"></canvas>
+    </div>
+
+    <a href="/quiz" class="btn">Retake Quiz</a>
+    <a href="/logout" class="btn">Logout</a>
+
+    <script>
+        const ctx = document.getElementById('scoreChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Correct', 'Wrong'],
+                datasets: [{
+                    data: [{{ score }}, {{ 10 - score }}],
+                    backgroundColor: ['#4CAF50', '#f44336']
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom'
+                    }
+                },
+                cutout: '70%'
+            }
+        });
+    </script>
+
+</body>
+</html>
